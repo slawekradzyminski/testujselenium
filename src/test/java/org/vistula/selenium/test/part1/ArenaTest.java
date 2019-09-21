@@ -7,10 +7,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.function.Function;
 
 public class ArenaTest {
 
@@ -38,6 +36,9 @@ public class ArenaTest {
         driver.findElement(By.id("email")).sendKeys("administrator@testarena.pl");
         driver.findElement(By.id("password")).sendKeys("sumXQQ72$L");
         driver.findElement(By.id("login")).click();
+
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("footer")));
 
         Assertions.assertThat(driver.getTitle()).contains("Kokpit");
     }
