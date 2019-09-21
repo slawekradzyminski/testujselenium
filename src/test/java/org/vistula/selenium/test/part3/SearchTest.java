@@ -1,9 +1,9 @@
-package org.vistula.selenium.test;
+package org.vistula.selenium.test.part3;
 
 import org.junit.Test;
-import org.vistula.selenium.pages.MainPage;
-import org.vistula.selenium.pages.PostPage;
-import org.vistula.selenium.pages.SearchResultsPage;
+import org.vistula.selenium.pages.part3.MainPage;
+import org.vistula.selenium.pages.part3.PostPage;
+import org.vistula.selenium.pages.part3.SearchResultsPage;
 
 public class SearchTest extends SeleniumTest {
 

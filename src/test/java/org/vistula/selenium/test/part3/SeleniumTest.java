@@ -1,4 +1,4 @@
-package org.vistula.selenium.test;
+package org.vistula.selenium.test.part3;
 
 import org.junit.After;
 import org.junit.Before;

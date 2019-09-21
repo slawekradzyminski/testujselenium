@@ -1,4 +1,4 @@
-package org.vistula.selenium.pages;
+package org.vistula.selenium.pages.part3;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
