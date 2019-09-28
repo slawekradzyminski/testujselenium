@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,9 +34,13 @@ public class ArenaTest {
     @Test
     public void myFirstInteractionTest() {
         driver.get("http://demo.testarena.pl/zaloguj");
-        driver.findElement(By.id("email")).sendKeys("administrator@testarena.pl");
-        driver.findElement(By.id("password")).sendKeys("sumXQQ72$L");
-        driver.findElement(By.id("login")).click();
+        WebElement email = driver.findElement(By.id("email"));
+        WebElement password = driver.findElement(By.id("password"));
+        WebElement login = driver.findElement(By.id("login"));
+
+        email.sendKeys("administrator@testarena.pl");
+        password.sendKeys("sumXQQ72$L");
+        login.click();
 
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("footer")));
