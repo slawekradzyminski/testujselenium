@@ -24,3 +24,18 @@
 
 # Working with project
 
+There are 9 branches which show solutions to tasks displayed on Slides.
+
+`git checkout part2`
+
+`git checkout part3`
+
+...
+
+`git checkout part 9`
+
+Whenever you got stuck you can always discard your changes with
+
+` git reset --hard`
+
+and then checkout desired branch with command showed above.
