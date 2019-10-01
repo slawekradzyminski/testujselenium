@@ -32,7 +32,7 @@ There are 9 branches which show solutions to tasks displayed on Slides.
 
 ...
 
-`git checkout part 9`
+`git checkout part9`
 
 Whenever you got stuck you can always discard your changes with
 
