@@ -5,11 +5,14 @@ import org.assertj.core.api.Assertions;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.openqa.selenium.Keys.ENTER;
 
 public class ArenaTest {
 
@@ -32,18 +35,32 @@ public class ArenaTest {
     public void myFirstInteractionTest() {
         driver = new ChromeDriver();
         driver.get("http://demo.testarena.pl/zaloguj");
-        WebElement email = driver.findElement(By.id("email"));
-        WebElement password = driver.findElement(By.id("password"));
-        WebElement login = driver.findElement(By.id("login"));
+       
+        WebElement captcha = driver.findElement(By.id("login"));
+        
+        captcha.click();
+        
+        new WebDriverWait(driver, 5, 250)
+                .until(ExpectedConditions.presenceOfElementLocated(By.className("login_form_error")));
 
-        email.sendKeys("administrator@testarena.pl");
-        password.sendKeys("sumXQQ72$L");
-        login.click();
 
-        new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("footer")));
 
-        Assertions.assertThat(driver.getTitle()).contains("Kokpit");
+
+
+
+    }
+
+    @Test
+    public void myVistulaUniversityTest() {
+        driver = new ChromeDriver();
+        driver.get("https://www.google.pl");
+        WebElement szukajVistula = driver.findElement(By.cssSelector("input[type='text']"));
+        szukajVistula.sendKeys("Vistula University");
+        szukajVistula.sendKeys(Keys.ENTER);
+
+
+
+
         driver.quit();
     }
 
