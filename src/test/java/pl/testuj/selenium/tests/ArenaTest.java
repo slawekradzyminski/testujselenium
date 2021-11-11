@@ -1,4 +1,4 @@
-package org.vistula.selenium.test.part1;
+package pl.testuj.selenium.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.assertj.core.api.Assertions;
