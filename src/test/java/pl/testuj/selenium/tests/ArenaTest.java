@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pl.testuj.selenium.pages.HomePage;
 
 public class ArenaTest {
 
@@ -32,6 +33,12 @@ public class ArenaTest {
     @Test
     public void myFirstSeleniumTest() {
         Assertions.assertThat(driver.getTitle()).contains("TestArena");
+    }
+
+    @Test
+    public void myFirstPOPSeleniumTest() {
+        HomePage homePage = new HomePage(driver);
+        homePage.login();
     }
 
 }
