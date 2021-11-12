@@ -18,7 +18,7 @@ import java.net.URL;
 import static org.junit.jupiter.api.parallel.ExecutionMode.CONCURRENT;
 
 @Execution(CONCURRENT)
-public class ArenaTest {
+public class ArenaTestTest {
 
     private WebDriver driver;
 
