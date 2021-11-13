@@ -1,4 +1,4 @@
-package pl.testuj.unit;
+package pl.testuj.unit.executable;
 
 public class MainPlayground {
 
