@@ -31,4 +31,18 @@ public class Car {
         this.gear--;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        return numberOfDoors == car.numberOfDoors;
+    }
+
+    @Override
+    public int hashCode() {
+        return numberOfDoors;
+    }
 }

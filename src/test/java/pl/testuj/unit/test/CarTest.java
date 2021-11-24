@@ -42,4 +42,13 @@ public class CarTest {
         Assertions.assertThat(suzuki.getGear()).isEqualTo(2);
     }
 
+    @Test
+    public void shouldEqualTwoCars() {
+        Car suzuki = new Car(3);
+        suzuki.setGear(2);
+        Car seat = new Car(3);
+        seat.setGear(1);
+        Assertions.assertThat(suzuki.equals(seat)).isEqualTo(true);
+    }
+
 }
