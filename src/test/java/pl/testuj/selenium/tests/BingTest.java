@@ -4,7 +4,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class BingTest extends AbstractTest {
@@ -24,6 +27,8 @@ public class BingTest extends AbstractTest {
     @Test
     public void shouldDisplayAtLeastFourResults() {
         search("Eclipse Group UK");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("li.b_algo")));
+
         List<WebElement> results = driver.findElements(By.cssSelector("li.b_algo"));
         Assertions.assertThat(results).hasSizeGreaterThanOrEqualTo(4);
     }
