@@ -24,7 +24,9 @@ public abstract class AbstractTest {
 
     @AfterEach
     public void closeDriver() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     abstract String getInitialUrl();
