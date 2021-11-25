@@ -1,9 +1,10 @@
-package pl.testuj.selenium.tests;
+package pl.testuj.selenium.tests.arena;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pl.testuj.selenium.tests.AbstractTest;
 
 public class ArenaTest extends AbstractTest {
 
@@ -36,6 +37,5 @@ public class ArenaTest extends AbstractTest {
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login")).click();
     }
-
 
 }
