@@ -2,6 +2,8 @@ package pl.testuj.selenium.tests;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class ArenaTest extends AbstractTest {
 
@@ -14,5 +16,26 @@ public class ArenaTest extends AbstractTest {
     public void myFirstSeleniumTest() {
         Assertions.assertThat(driver.getTitle()).contains("TestArena");
     }
+
+    @Test
+    public void shouldSuccessfullyLogIn() {
+        attemptLogin("administrator@testarena.pl", "sumXQQ72$L");
+        WebElement userInfo = driver.findElement(By.className("user-info"));
+        Assertions.assertThat(userInfo.isDisplayed()).isTrue();
+    }
+
+    @Test
+    public void shouldFailToLogIn() {
+        attemptLogin("wrong", "wrong");
+        WebElement userInfo = driver.findElement(By.className("login_form_error"));
+        Assertions.assertThat(userInfo.isDisplayed()).isTrue();
+    }
+
+    private void attemptLogin(String email, String password) {
+        driver.findElement(By.id("email")).sendKeys(email);
+        driver.findElement(By.id("password")).sendKeys(password);
+        driver.findElement(By.id("login")).click();
+    }
+
 
 }
