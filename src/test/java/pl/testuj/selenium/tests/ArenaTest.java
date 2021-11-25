@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 public class ArenaTest extends AbstractTest {
 
     @Override
-    String getInitialUrl() {
+    public String getInitialUrl() {
         return "http://demo.testarena.pl/zaloguj";
     }
 

@@ -13,7 +13,7 @@ import java.util.List;
 public class BingTest extends AbstractTest {
 
     @Override
-    String getInitialUrl() {
+    public String getInitialUrl() {
         return "https://www.bing.com";
     }
 

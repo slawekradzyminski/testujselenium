@@ -21,7 +21,7 @@ public class AwesomeTestingTest extends AbstractTest {
     }
 
     @Override
-    String getInitialUrl() {
+    public String getInitialUrl() {
         return "https://www.awesome-testing.com";
     }
 

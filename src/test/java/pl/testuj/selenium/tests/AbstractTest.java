@@ -34,5 +34,5 @@ public abstract class AbstractTest {
         }
     }
 
-    abstract String getInitialUrl();
+    public abstract String getInitialUrl();
 }

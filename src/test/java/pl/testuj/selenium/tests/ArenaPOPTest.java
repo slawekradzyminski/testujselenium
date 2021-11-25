@@ -6,7 +6,7 @@ import pl.testuj.selenium.pages.HomePage;
 public class ArenaPOPTest extends AbstractTest {
 
     @Override
-    String getInitialUrl() {
+    public String getInitialUrl() {
         return "http://demo.testarena.pl/zaloguj";
     }
 

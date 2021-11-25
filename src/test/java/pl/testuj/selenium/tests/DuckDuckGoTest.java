@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 public class DuckDuckGoTest extends AbstractTest {
 
     @Override
-    String getInitialUrl() {
+    public String getInitialUrl() {
         return "https://www.duckduckgo.com";
     }
 
