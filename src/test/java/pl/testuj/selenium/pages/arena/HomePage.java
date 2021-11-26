@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class HomePage {
 
     @FindBy(className = "user-info")
@@ -13,6 +15,12 @@ public class HomePage {
 
     @FindBy(css = "[title=Administracja]")
     private WebElement adminPanelIcon;
+
+    @FindBy(className = "header_logout")
+    private WebElement logoutButton;
+
+    @FindBy(css = "ul.menu li")
+    private List<WebElement> sidebarLinks;
 
     private final WebDriver driver;
 
@@ -28,5 +36,15 @@ public class HomePage {
 
     public void verifyUserInfoDisplayed() {
         Assertions.assertThat(userInfo.isDisplayed()).isTrue();
+    }
+
+    public LoginPage clickLogoutButton() {
+        logoutButton.click();
+        return new LoginPage(driver);
+    }
+
+    public TestsDatabasePage openTestsDatabase() {
+        sidebarLinks.get(8).click();
+        return new TestsDatabasePage(driver);
     }
 }

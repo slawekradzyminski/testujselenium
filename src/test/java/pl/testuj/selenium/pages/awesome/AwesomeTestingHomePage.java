@@ -6,8 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pl.testuj.selenium.tests.AwesomeTestingTest;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class AwesomeTestingHomePage {
@@ -23,6 +25,12 @@ public class AwesomeTestingHomePage {
 
     @FindBy(css = "input.gsc-search-button")
     private WebElement searchButton;
+
+    @FindBy(className = "post-title")
+    private List<WebElement> postTitles;
+
+    @FindBy(css = ".HTML a img")
+    private List<WebElement> socialIcons;
 
     private final WebDriver driver;
 
@@ -48,5 +56,16 @@ public class AwesomeTestingHomePage {
     public LabelPage clickLabel(String label) {
         driver.findElement(By.linkText(label)).click();
         return new LabelPage(driver);
+    }
+
+    public PostPage openFirstPost() {
+        postTitles.get(0).click();
+        return new PostPage(driver);
+    }
+
+    public void clickGithubLink() {
+        socialIcons.get(3).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
     }
 }

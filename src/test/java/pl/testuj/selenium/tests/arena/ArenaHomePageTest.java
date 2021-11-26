@@ -24,6 +24,20 @@ public class ArenaHomePageTest extends AbstractTest {
     }
 
     @Test
+    public void shouldCorrectlyLogOut() {
+        new HomePage(driver)
+                .clickLogoutButton()
+                .verifyThatTheUserIsLoggedOut();
+    }
+
+    @Test
+    public void dropDownTest() throws InterruptedException {
+        new HomePage(driver)
+                .openTestsDatabase()
+                .addAutomatedTests();
+    }
+
+    @Test
     public void shouldAddProject() {
         new HomePage(driver)
                 .openAdministrationPanel()

@@ -53,4 +53,8 @@ public class LoginPage {
         passwordField.sendKeys(password);
         loginButton.click();
     }
+
+    public void verifyThatTheUserIsLoggedOut() {
+        Assertions.assertThat(loginButton.isDisplayed()).isTrue();
+    }
 }
