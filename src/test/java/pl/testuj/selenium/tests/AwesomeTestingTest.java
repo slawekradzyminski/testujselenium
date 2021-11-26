@@ -46,9 +46,10 @@ public class AwesomeTestingTest extends AbstractTest {
 
     @Test
     public void shouldDisplayPostsAssociatedWithLabel() {
-        driver.findElement(By.linkText("Cypress")).click();
-        waitForResults();
-        verifyNumberOfPosts(1);
+        new AwesomeTestingHomePage(driver)
+                .clickLabel("Cypress")
+                .waitForResults()
+                .verifyNumberOfPosts(1);
     }
 
     @Test
@@ -72,15 +73,6 @@ public class AwesomeTestingTest extends AbstractTest {
         Assertions.assertThat(driver.getTitle()).contains("GitHub");
         driver.switchTo().window(mainWindowHandle);
         Assertions.assertThat(driver.getTitle()).contains("Awesome Testing");
-    }
-
-    private void waitForResults() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.className("status-msg-body")));
-    }
-
-    private void verifyNumberOfPosts(int numberOfPosts) {
-        List<WebElement> posts = driver.findElements(By.className("post-title"));
-        Assertions.assertThat(posts).hasSize(numberOfPosts);
     }
 
 }

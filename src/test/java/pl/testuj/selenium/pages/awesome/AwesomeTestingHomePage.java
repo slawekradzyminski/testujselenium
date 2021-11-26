@@ -44,4 +44,9 @@ public class AwesomeTestingHomePage {
         searchButton.click();
         return new SearchResultsPage(driver);
     }
+
+    public LabelPage clickLabel(String label) {
+        driver.findElement(By.linkText(label)).click();
+        return new LabelPage(driver);
+    }
 }
