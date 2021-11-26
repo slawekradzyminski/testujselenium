@@ -18,7 +18,8 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void openAdministrationPanel() {
+    public AdministrationPage openAdministrationPanel() {
         adminPanelIcon.click();
+        return new AdministrationPage(driver);
     }
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pl.testuj.selenium.pages.AddNewProjectPage;
 import pl.testuj.selenium.pages.AdministrationPage;
 import pl.testuj.selenium.pages.HomePage;
 import pl.testuj.selenium.pages.LoginPage;
@@ -14,6 +15,8 @@ import pl.testuj.selenium.tests.AbstractTest;
 import java.util.List;
 
 public class ArenaHomePageTest extends AbstractTest {
+
+    private final String projectName = RandomStringUtils.randomAlphabetic(10);
 
     // Such login should ideally occur via backend
     @BeforeEach
@@ -30,17 +33,9 @@ public class ArenaHomePageTest extends AbstractTest {
     @Test
     public void shouldAddProject() {
         HomePage homePage = new HomePage(driver);
-        homePage.openAdministrationPanel();
-
-        AdministrationPage administrationPage = new AdministrationPage(driver);
-        administrationPage.clickAddNewProject();
-
-        String projectName = RandomStringUtils.randomAlphabetic(10);
-
-        driver.findElement(By.id("name")).sendKeys(projectName);
-        driver.findElement(By.id("prefix")).sendKeys(RandomStringUtils.randomAlphabetic(6));
-        driver.findElement(By.id("description")).sendKeys(RandomStringUtils.randomAlphabetic(20));
-        driver.findElement(By.id("save")).click();
+        homePage.openAdministrationPanel()
+                .clickAddNewProject()
+                .addProject(projectName);
 
         driver.findElement(By.cssSelector("[title=Kokpit]")).click();
         driver.findElement(By.cssSelector("[title=Administracja]")).click();

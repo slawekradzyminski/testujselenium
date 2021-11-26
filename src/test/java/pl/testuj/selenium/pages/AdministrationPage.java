@@ -20,7 +20,8 @@ public class AdministrationPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickAddNewProject() {
+    public AddNewProjectPage clickAddNewProject() {
         topCornerButtons.get(0).click();
+        return new AddNewProjectPage(driver);
     }
 }
