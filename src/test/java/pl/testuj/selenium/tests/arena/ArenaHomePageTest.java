@@ -35,9 +35,9 @@ public class ArenaHomePageTest extends AbstractTest {
         HomePage homePage = new HomePage(driver);
         homePage.openAdministrationPanel()
                 .clickAddNewProject()
-                .addProject(projectName);
+                .addProject(projectName)
+                .openCockpit();
 
-        driver.findElement(By.cssSelector("[title=Kokpit]")).click();
         driver.findElement(By.cssSelector("[title=Administracja]")).click();
         driver.findElement(By.id("search")).sendKeys(projectName);
         driver.findElement(By.id("j_searchButton")).click();

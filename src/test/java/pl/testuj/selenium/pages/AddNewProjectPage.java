@@ -27,10 +27,11 @@ public class AddNewProjectPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void addProject(String projectName) {
+    public AdministrationPage addProject(String projectName) {
         nameField.sendKeys(projectName);
         prefixField.sendKeys(RandomStringUtils.randomAlphabetic(6));
         descriptionField.sendKeys(RandomStringUtils.randomAlphabetic(20));
         saveButton.click();
+        return new AdministrationPage(driver);
     }
 }

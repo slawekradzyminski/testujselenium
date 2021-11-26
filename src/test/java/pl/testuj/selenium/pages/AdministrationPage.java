@@ -13,6 +13,9 @@ public class AdministrationPage {
     @FindBy(className = "button_link")
     private List<WebElement> topCornerButtons;
 
+    @FindBy(css = "[title=Kokpit]")
+    private WebElement cockpitIcon;
+
     private final WebDriver driver;
 
     public AdministrationPage(WebDriver driver) {
@@ -23,5 +26,10 @@ public class AdministrationPage {
     public AddNewProjectPage clickAddNewProject() {
         topCornerButtons.get(0).click();
         return new AddNewProjectPage(driver);
+    }
+
+    public HomePage openCockpit() {
+        cockpitIcon.click();
+        return new HomePage(driver);
     }
 }
