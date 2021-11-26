@@ -23,10 +23,10 @@ public class AdministrationPage {
     @FindBy(id = "j_searchButton")
     private WebElement searchButton;
 
-    @FindBy(css = "tbody tr td")
+    @FindBy(css = "tbody tr")
     private List<WebElement> projectRow;
 
-    @FindBy(css = "tbody tr")
+    @FindBy(css = "tbody tr td")
     private List<WebElement> tableCell;
 
     private final WebDriver driver;
