@@ -1,5 +1,6 @@
 package pl.testuj.selenium.pages;
 
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,18 @@ public class AdministrationPage {
     @FindBy(css = "[title=Kokpit]")
     private WebElement cockpitIcon;
 
+    @FindBy(id = "search")
+    private WebElement searchField;
+
+    @FindBy(id = "j_searchButton")
+    private WebElement searchButton;
+
+    @FindBy(css = "tbody tr")
+    private List<WebElement> projectRow;
+
+    @FindBy(css = "tbody tr td")
+    private List<WebElement> tableCell;
+
     private final WebDriver driver;
 
     public AdministrationPage(WebDriver driver) {
@@ -31,5 +44,21 @@ public class AdministrationPage {
     public HomePage openCockpit() {
         cockpitIcon.click();
         return new HomePage(driver);
+    }
+
+    public AdministrationPage searchByProjectName(String projectName) {
+        searchField.sendKeys(projectName);
+        searchButton.click();
+        return new AdministrationPage(driver);
+    }
+
+    public AdministrationPage verifyNumberOfProjectsFound(int projectCount) {
+        Assertions.assertThat(projectRow).hasSize(projectCount);
+        return this;
+    }
+
+    public void verifyFirstProjectTitle(String projectName) {
+        WebElement firstElementTitle = tableCell.get(0);
+        Assertions.assertThat(firstElementTitle.getText()).isEqualTo(projectName);
     }
 }

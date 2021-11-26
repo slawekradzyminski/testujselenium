@@ -6,8 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import pl.testuj.selenium.pages.AddNewProjectPage;
-import pl.testuj.selenium.pages.AdministrationPage;
 import pl.testuj.selenium.pages.HomePage;
 import pl.testuj.selenium.pages.LoginPage;
 import pl.testuj.selenium.tests.AbstractTest;
@@ -32,21 +30,15 @@ public class ArenaHomePageTest extends AbstractTest {
 
     @Test
     public void shouldAddProject() {
-        HomePage homePage = new HomePage(driver);
-        homePage.openAdministrationPanel()
+        new HomePage(driver)
+                .openAdministrationPanel()
                 .clickAddNewProject()
                 .addProject(projectName)
-                .openCockpit();
-
-        driver.findElement(By.cssSelector("[title=Administracja]")).click();
-        driver.findElement(By.id("search")).sendKeys(projectName);
-        driver.findElement(By.id("j_searchButton")).click();
-
-        List<WebElement> projectsFound = driver.findElements(By.cssSelector("tbody tr"));
-        Assertions.assertThat(projectsFound).hasSize(1);
-
-        WebElement firstElementTitle = driver.findElements(By.cssSelector("tbody tr td")).get(0);
-        Assertions.assertThat(firstElementTitle.getText()).isEqualTo(projectName);
+                .openCockpit()
+                .openAdministrationPanel()
+                .searchByProjectName(projectName)
+                .verifyNumberOfProjectsFound(1)
+                .verifyFirstProjectTitle(projectName);
     }
 
 }
