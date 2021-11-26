@@ -37,7 +37,7 @@ public class ArenaHomePageTest extends AbstractTest {
                 .openCockpit()
                 .openAdministrationPanel()
                 .searchByProjectName(projectName)
-                .verifyNumberOfProjectsFound(2)
+                .verifyNumberOfProjectsFound(1)
                 .verifyFirstProjectTitle(projectName);
     }
 

@@ -37,7 +37,7 @@ public class AdministrationPage {
     }
 
     public AddNewProjectPage clickAddNewProject() {
-        topCornerButtons.get(1).click();
+        topCornerButtons.get(0).click();
         return new AddNewProjectPage(driver);
     }
 
@@ -47,6 +47,7 @@ public class AdministrationPage {
     }
 
     public AdministrationPage searchByProjectName(String projectName) {
+        searchField.sendKeys(projectName);
         searchButton.click();
         return new AdministrationPage(driver);
     }
