@@ -1,4 +1,4 @@
-package pl.testuj.selenium.pages;
+package pl.testuj.selenium.pages.arena;
 
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebDriver;
