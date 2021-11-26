@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pl.testuj.selenium.pages.LoginPage;
 import pl.testuj.selenium.tests.AbstractTest;
 
 import java.util.List;
@@ -15,9 +16,8 @@ public class ArenaHomePageTest extends AbstractTest {
     // Such login should ideally occur via backend
     @BeforeEach
     public void logIn() {
-        driver.findElement(By.id("email")).sendKeys("administrator@testarena.pl");
-        driver.findElement(By.id("password")).sendKeys("sumXQQ72$L");
-        driver.findElement(By.id("login")).click();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("administrator@testarena.pl", "sumXQQ72$L");
     }
 
     @Override
