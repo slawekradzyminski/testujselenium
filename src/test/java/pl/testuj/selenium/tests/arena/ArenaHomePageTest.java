@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pl.testuj.selenium.pages.AdministrationPage;
+import pl.testuj.selenium.pages.HomePage;
 import pl.testuj.selenium.pages.LoginPage;
 import pl.testuj.selenium.tests.AbstractTest;
 
@@ -27,8 +29,11 @@ public class ArenaHomePageTest extends AbstractTest {
 
     @Test
     public void shouldAddProject() {
-        driver.findElement(By.cssSelector("[title=Administracja]")).click();
-        driver.findElements(By.className("button_link")).get(0).click();
+        HomePage homePage = new HomePage(driver);
+        homePage.openAdministrationPanel();
+
+        AdministrationPage administrationPage = new AdministrationPage(driver);
+        administrationPage.clickAddNewProject();
 
         String projectName = RandomStringUtils.randomAlphabetic(10);
 
