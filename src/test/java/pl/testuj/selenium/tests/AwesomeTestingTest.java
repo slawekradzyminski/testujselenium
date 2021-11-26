@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import pl.testuj.selenium.pages.awesome.AwesomeTestingHomePage;
 
 import java.util.List;
 
@@ -25,22 +26,22 @@ public class AwesomeTestingTest extends AbstractTest {
 
     @Test
     public void shouldDisplayFourPosts() {
-        verifyNumberOfPosts(4);
+        new AwesomeTestingHomePage(driver)
+                .verifyNumberOfPosts(4);
     }
 
     @Test
     public void shouldDisplayFiveRecommendedPosts() {
-        List<WebElement> popularPosts = driver.findElements(By.cssSelector(".popular-posts li"));
-        Assertions.assertThat(popularPosts).hasSize(5);
+        new AwesomeTestingHomePage(driver)
+                .verifyNumberOfRecommendedPosts(5);
     }
 
     @Test
     public void shouldSearchForCypress() {
-        driver.findElement(By.cssSelector("input.gsc-input")).sendKeys("Cypress");
-        driver.findElement(By.cssSelector("input.gsc-search-button")).click();
-
-        waitForResults();
-        verifyNumberOfPosts(4);
+        new AwesomeTestingHomePage(driver)
+                .search("Cypress")
+                .waitForResults()
+                .verifyNumberOfPosts(4);
     }
 
     @Test
