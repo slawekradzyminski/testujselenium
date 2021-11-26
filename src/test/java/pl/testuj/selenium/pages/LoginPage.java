@@ -28,13 +28,14 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void login(String email, String password) {
+    public HomePage login(String email, String password) {
 //        driver.findElement(EMAIL_FIELD).sendKeys(email);
 //        driver.findElement(PASSWORD_FIELD).sendKeys(password);
 //        driver.findElement(LOGIN_BUTTON).click();
         emailField.sendKeys(email);
         passwordField.sendKeys(password);
         loginButton.click();
+        return new HomePage(driver);
     }
 
 }

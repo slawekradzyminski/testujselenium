@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pl.testuj.selenium.pages.LoginPage;
 import pl.testuj.selenium.tests.AbstractTest;
 
 public class ArenaTest extends AbstractTest {
@@ -20,9 +21,9 @@ public class ArenaTest extends AbstractTest {
 
     @Test
     public void shouldSuccessfullyLogIn() {
-        attemptLogin("administrator@testarena.pl", "sumXQQ72$L");
-        WebElement userInfo = driver.findElement(By.className("user-info"));
-        Assertions.assertThat(userInfo.isDisplayed()).isTrue();
+        new LoginPage(driver)
+                .login("administrator@testarena.pl", "sumXQQ72$L")
+                .verifyUserInfoDisplayed();
     }
 
     @Test
