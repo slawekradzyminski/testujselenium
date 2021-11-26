@@ -6,11 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WindowType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
-import java.util.Set;
 
 public class AwesomeTestingTest extends AbstractTest {
 
@@ -28,6 +26,12 @@ public class AwesomeTestingTest extends AbstractTest {
     @Test
     public void shouldDisplayFourPosts() {
         verifyNumberOfPosts(4);
+    }
+
+    @Test
+    public void shouldDisplayFiveRecommendedPosts() {
+        List<WebElement> popularPosts = driver.findElements(By.cssSelector(".popular-posts li"));
+        Assertions.assertThat(popularPosts).hasSize(5);
     }
 
     @Test
